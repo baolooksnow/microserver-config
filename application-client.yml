@@ -1,0 +1,34 @@
+﻿spring:
+   profiles:
+     active: 
+       - dev
+  
+
+spring:
+  application:
+    name: bao-springcloud-config  
+---
+server:
+  port:  9090
+
+spring: 
+   profiles: dev
+   application: 
+      name: microservercloud-config-client
+eureka:
+   client:
+     server-url:
+        defaultZone: http://eureka-dev.com:7001/eureka/
+
+---
+server:
+  port: 9091
+
+spring:
+  profiles: test
+  application:
+    name: microservercloud-config-client
+eureka:
+  client:
+    server-url:
+      defaultZone: http://eureka-dev.com:7002/eureka/
