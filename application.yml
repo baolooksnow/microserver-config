@@ -1,0 +1,29 @@
+server:
+  port: 9999
+  
+
+spring:
+  application:
+    name: bao-springcloud-zuul
+    
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka.7002.com/eureka/,http://eureka.7001.com/eureka/,http://eureka.7003.com/eureka/
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true  
+
+zuul:
+  prefix: /baogod   #统一的前缀，控制访问 
+  ignored-services:  bao-springcloud-consumer   #忽略原服务，不对外暴露真实服务，使用*，表示所有服务都不被暴露
+  routes:
+    mydept.serviceId: bao-springcloud-consumer    
+    mydept.path: /mydept/** 
+    
+info:
+   app.name: bao-springcloud-provide-8001
+   company.name: baogod
+   build.artifactId: $project.artifactId$
+   build.version: $project.version$
